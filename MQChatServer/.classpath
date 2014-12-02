@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry exported="true" kind="lib" path="libs/activemq-all-5.8.0.jar" sourcepath="activemq-src-5.8.0.zip">
+		<attributes>
+			<attribute name="javadoc_location" value="http://activemq.apache.org/maven/5.8.0/apidocs"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/StompjAndroidLibrary"/>
+	<classpathentry exported="true" kind="lib" path="libs/xstream-1.4.4.jar" sourcepath="libs/xstream-1.4.4-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/MQGameServer/libs/xstream-1.4.4-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/MQChatCommon"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
