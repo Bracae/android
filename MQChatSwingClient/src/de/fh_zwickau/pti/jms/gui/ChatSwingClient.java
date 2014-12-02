@@ -12,6 +12,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -124,11 +125,29 @@ public class ChatSwingClient extends JFrame implements
 	public final static String REQUESTING = "REQUESTING";
 	private static final long serialVersionUID = -494594251357510136L;
 
+	/**
+	 * starts a client session
+	 * 
+	 * @param args
+	 *            not used
+	 */
+	public static void main(final String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				try {
+					new ChatSwingClient();
+				} catch (final Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
 	private JButton btnNotLoggedInLogin, btnNotLoggedInRegister,
 			btnLoggedInNewChat, btnLoggedInLogout, btnSend, btnInvite,
 			btnCloseChatroom, btnInvitedAccept, btnInvitedDeny, btnRequests,
 			btnAbortRequest, btnLeaveChatroom;
-
 	private final CardLayout cardLayout = new CardLayout();
 	private ChatFrame chattingFrame;
 	private final String connection;
@@ -550,6 +569,7 @@ public class ChatSwingClient extends JFrame implements
 			ChatSwingClient.this.notLoggedinPanel.lockElements();
 		}
 	};
+
 	private LoginPanel notLoggedinPanel;
 
 	/**
@@ -636,28 +656,36 @@ public class ChatSwingClient extends JFrame implements
 
 	/**
 	 * initialise the client
+	 * 
+	 * @throws IOException
 	 */
-	public ChatSwingClient() {
+	public ChatSwingClient() throws IOException {
 		this.connection = "tcp://localhost:61616";
 		this.initializeJMS(this.connection);
 		this.initializeGUI();
 	}
 
-	/**
-	 * starts a client session
-	 * 
-	 * @param args
-	 *            not used
-	 */
-	public static void main(final String[] args) {
-		EventQueue.invokeLater(new Runnable() {
+	private void addListeners() {
+		this.addMouseListener(new MouseAdapter() {
 			@Override
-			public void run() {
-				try {
-					new ChatSwingClient();
-				} catch (final Exception e) {
-					e.printStackTrace();
-				}
+			public void mousePressed(final MouseEvent e) {
+				ChatSwingClient.this.initialClick = e.getPoint();
+				ChatSwingClient.this
+						.getComponentAt(ChatSwingClient.this.initialClick);
+			}
+		});
+		this.addMouseMotionListener(new MouseMotionAdapter() {
+			@Override
+			public void mouseDragged(final MouseEvent e) {
+				final int thisX = ChatSwingClient.this.getLocation().x;
+				final int thisY = ChatSwingClient.this.getLocation().y;
+				final int xMoved = (thisX + e.getX())
+						- (thisX + ChatSwingClient.this.initialClick.x);
+				final int yMoved = (thisY + e.getY())
+						- (thisY + ChatSwingClient.this.initialClick.y);
+				final int X = thisX + xMoved;
+				final int Y = thisY + yMoved;
+				ChatSwingClient.this.setLocation(X, Y);
 			}
 		});
 	}
@@ -875,79 +903,6 @@ public class ChatSwingClient extends JFrame implements
 	}
 
 	/**
-	 * creates the elements of the gui
-	 */
-	public void initializeGUI() {
-		this.initBasicSettings();
-		this.initPanels();
-		this.addListeners();
-		this.setVisible(true);
-		this.initReferencesToGuiElements();
-	}
-
-	/**
-	 * sets the current needed panel
-	 * 
-	 * @param karte
-	 *            name of the panel
-	 */
-	public void setCard(final String karte) {
-		this.cardLayout.show(this.mainPanel, karte);
-		switch (karte) {
-		case NOTLOGGEDIN:
-			this.setTitle("subscribe");
-			break;
-		case LOGGEDIN:
-			this.setTitle("WhistleBuster");
-			break;
-		case INVITED:
-			this.setTitle("invitation");
-			break;
-		case REQUESTING:
-			this.setTitle("request");
-			break;
-		default:
-			this.setTitle("");
-			break;
-		}
-	}
-
-	/**
-	 * sets the visibility of the frame
-	 * 
-	 * @param visible
-	 *            true, if the frame is visible, otherwise false
-	 */
-	public void setVisibleChatSwingClient(final boolean visible) {
-		this.setVisible(visible);
-	}
-
-	private void addListeners() {
-		this.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mousePressed(final MouseEvent e) {
-				ChatSwingClient.this.initialClick = e.getPoint();
-				ChatSwingClient.this
-						.getComponentAt(ChatSwingClient.this.initialClick);
-			}
-		});
-		this.addMouseMotionListener(new MouseMotionAdapter() {
-			@Override
-			public void mouseDragged(final MouseEvent e) {
-				final int thisX = ChatSwingClient.this.getLocation().x;
-				final int thisY = ChatSwingClient.this.getLocation().y;
-				final int xMoved = (thisX + e.getX())
-						- (thisX + ChatSwingClient.this.initialClick.x);
-				final int yMoved = (thisY + e.getY())
-						- (thisY + ChatSwingClient.this.initialClick.y);
-				final int X = thisX + xMoved;
-				final int Y = thisY + yMoved;
-				ChatSwingClient.this.setLocation(X, Y);
-			}
-		});
-	}
-
-	/**
 	 * sets the basic settings
 	 */
 	private void initBasicSettings() {
@@ -965,6 +920,17 @@ public class ChatSwingClient extends JFrame implements
 		this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
+	}
+
+	/**
+	 * creates the elements of the gui
+	 */
+	public void initializeGUI() {
+		this.initBasicSettings();
+		this.initPanels();
+		this.addListeners();
+		this.setVisible(true);
+		this.initReferencesToGuiElements();
 	}
 
 	private void initializeJMS(final String conn) {
@@ -1154,5 +1120,42 @@ public class ChatSwingClient extends JFrame implements
 				ChatSwingClient.this.currentState.onLeave();
 			}
 		});
+	}
+
+	/**
+	 * sets the current needed panel
+	 * 
+	 * @param karte
+	 *            name of the panel
+	 */
+	public void setCard(final String karte) {
+		this.cardLayout.show(this.mainPanel, karte);
+		switch (karte) {
+		case NOTLOGGEDIN:
+			this.setTitle("subscribe");
+			break;
+		case LOGGEDIN:
+			this.setTitle("WhistleBuster");
+			break;
+		case INVITED:
+			this.setTitle("invitation");
+			break;
+		case REQUESTING:
+			this.setTitle("request");
+			break;
+		default:
+			this.setTitle("");
+			break;
+		}
+	}
+
+	/**
+	 * sets the visibility of the frame
+	 * 
+	 * @param visible
+	 *            true, if the frame is visible, otherwise false
+	 */
+	public void setVisibleChatSwingClient(final boolean visible) {
+		this.setVisible(visible);
 	}
 }
