@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">AWhistleBuster</string>
+    <string name="app_name">WhistleBuster</string>
     <string name="action_settings">Settings</string>
     <string name="stomp_url">Stomp URL</string>
     <string name="stomp_port">Stomp Port</string>
     <string name="register">Register</string>
     <string name="uri">141.32.24.47</string>
-    <string name="title_activity_activity_lobby">ActivityLobby</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="title_activity_activity_chat_room">ActivityChatRoom</string>
     <string name="user">Hose</string>
     <string name="pwd">jacke</string>
     <string name="hint1">Hier die Nachricht eingeben.</string>
     <string name="new_chatroom">New Chatroom</string>
+    <string name="title_activity_chat">Willkommen</string>
 
 </resources>

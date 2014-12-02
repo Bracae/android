@@ -6,7 +6,7 @@
 
     <uses-sdk
         android:minSdkVersion="15"
-        android:targetSdkVersion="19" />
+        android:targetSdkVersion="21" />
 
     <uses-permission android:name="android.permission.INTERNET" >
     </uses-permission>
@@ -38,16 +38,18 @@
 
         <activity
             android:name="de.fh_zwickau.pti.mqchatandroidclient.ActivityLobby"
-            android:label="@string/title_activity_activity_lobby" >
+            android:label="@string/title_activity_chat" >
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
+
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <data android:mimeType="text/plain" />
             </intent-filter>
         </activity>
         <activity
             android:name="de.fh_zwickau.pti.mqchatandroidclient.ActivityChatRoom"
-            android:label="@string/title_activity_activity_chat_room" >
+            android:label="@string/title_activity_chat" >
         </activity>
     </application>
 

@@ -1,117 +1,174 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:tools="http://schemas.android.com/tools" android:layout_width="wrap_content"
-	android:layout_height="wrap_content" android:paddingBottom="@dimen/activity_vertical_margin"
-	android:paddingLeft="@dimen/activity_horizontal_margin"
-	android:paddingRight="@dimen/activity_horizontal_margin"
-	android:paddingTop="@dimen/activity_vertical_margin" tools:context=".ActivityChat">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="de.fh_zwickau.pti.mqchatandroidclient.ActivityChat" >
 
-	<TableLayout android:id="@+id/tableLayout1"
-		android:layout_width="wrap_content" android:layout_height="wrap_content">
+    <TableLayout
+        android:id="@+id/tableLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="false"
+        android:layout_centerVertical="false" >
 
-		<TableRow android:id="@+id/tableRow1" android:layout_width="wrap_content"
-			android:layout_height="wrap_content" android:clipChildren="true"
-			android:baselineAligned="true">
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible" >
 
-			<TextView android:id="@+id/textView1" android:layout_width="wrap_content"
-				android:layout_height="wrap_content" android:text="@string/stomp_url"
-				android:textAppearance="?android:attr/textAppearanceMedium" />
+            <EditText
+                android:id="@+id/urlEditText"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="141.32.24.102"
+                android:inputType="textUri"
+                android:maxLength="15"
+                android:textStyle="italic"
+                android:width="250dp" />
 
-			<EditText android:id="@+id/urlEditText"
-				android:layout_width="wrap_content" android:layout_height="wrap_content"
-				android:text="@string/uri" android:inputType="textUri">
+            <EditText
+                android:id="@+id/portEditText"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="61613"
+                android:inputType="number"
+                android:maxLength="5"
+                android:text="61613"
+                android:textStyle="italic"
+                android:width="70dp" />
 
-				<requestFocus />
-			</EditText>
+            <EditText
+                android:id="@+id/unameText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Username"
+                android:text="@string/user"
+                android:width="150dp" />
 
-		</TableRow>
+            <EditText
+                android:id="@+id/pwordText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:text="@string/pwd"
+                android:width="150dp" />
+        </TableRow>
 
-		<TableRow android:id="@+id/tableRow2" android:layout_width="wrap_content"
-			android:clipChildren="true" android:layout_height="wrap_content">
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clipChildren="true" >
 
-			<TextView android:id="@+id/textView2" android:layout_width="wrap_content"
-				android:layout_height="wrap_content" android:text="@string/stomp_port"
-				android:textAppearance="?android:attr/textAppearanceMedium" />
+            <ToggleButton
+                android:id="@+id/connectToggleButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_weight="1"
+                android:height="20dp"
+                android:minHeight="20dp"
+                android:minWidth="120dp"
+                android:textOff="Disco"
+                android:textOn="Conn"
+                android:textSize="12sp"
+                android:width="120dp" />
 
-			<EditText android:id="@+id/portEditText"
-				android:layout_width="wrap_content" android:layout_height="wrap_content"
-				android:inputType="number" android:text="61613" />
-		</TableRow>
+            <Button
+                android:id="@+id/registerButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_weight="1"
+                android:height="20dp"
+                android:minHeight="20dp"
+                android:minWidth="80dp"
+                android:text="@string/register"
+                android:textSize="12sp"
+                android:width="80dp" />
 
-		<TableRow android:id="@+id/tableRow7" android:layout_width="wrap_content"
-			android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/loginButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:height="20dp"
+                android:minHeight="20dp"
+                android:minWidth="60dp"
+                android:text="Login"
+                android:textSize="12sp"
+                android:width="60dp" />
 
-			<TextView android:id="@+id/textView3" android:layout_width="wrap_content"
-				android:layout_height="wrap_content" android:text="Name"
-				android:textAppearance="?android:attr/textAppearanceMedium" />
+            <Button
+                android:id="@+id/logoutButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:height="20dp"
+                android:minHeight="20dp"
+                android:minWidth="70dp"
+                android:text="Logout"
+                android:textSize="12sp"
+                android:width="70dp" />
 
-			<EditText android:id="@+id/unameText" android:layout_width="wrap_content"
-				android:layout_height="wrap_content" android:text="@string/user" />
-		</TableRow>
+            <Button
+                android:id="@+id/getChattersButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:minHeight="20dp"
+                android:text="Chatters"
+                android:textSize="12sp" />
 
-		<TableRow android:id="@+id/tableRow6" android:layout_width="wrap_content"
-			android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/getChatroomsButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_weight="1"
+                android:height="20dp"
+                android:minHeight="20dp"
+                android:onClick="changeView"
+                android:text="Chats"
+                android:textSize="12sp" />
+        </TableRow>
+    </TableLayout>
 
-			<TextView android:id="@+id/textView4" android:layout_width="wrap_content"
-				android:layout_height="wrap_content" android:text="Password"
-				android:textAppearance="?android:attr/textAppearanceMedium" />
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tableLayout1" >
 
-			<EditText android:id="@+id/pwordText" android:layout_width="wrap_content"
-				android:layout_height="wrap_content" android:inputType="textPassword"
-				android:text="@string/pwd" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
-		</TableRow>
-
-		<TableRow android:id="@+id/tableRow3" android:clipChildren="true"
-			android:layout_width="wrap_content" android:layout_height="wrap_content">
-
-			<ToggleButton android:id="@+id/connectToggleButton"
-				android:layout_width="wrap_content" android:layout_height="wrap_content"
-				android:textOff="Disconnected" android:textOn="Connected" />
-
-			<Button android:id="@+id/registerButton" android:layout_width="wrap_content"
-				android:layout_height="wrap_content" android:text="@string/register" />
-
-		</TableRow>
-
-		<TableRow android:id="@+id/tableRow5" android:layout_width="wrap_content"
-			android:layout_height="wrap_content">
-
-			<Button android:id="@+id/loginButton" android:layout_width="wrap_content"
-				android:layout_height="wrap_content" android:text="Login" />
-
-			<Button android:id="@+id/logoutButton" android:layout_width="wrap_content"
-				android:layout_height="wrap_content" android:text="Logout" />
-
-		</TableRow>
-
-		<TableRow android:id="@+id/tableRow4" android:clipChildren="true"
-			android:layout_width="wrap_content" android:layout_height="wrap_content">
-
-			<Button android:id="@+id/getChattersButton"
-				android:layout_width="wrap_content" android:layout_height="wrap_content"
-				android:text="Get Chatters" />
-
-			<Button android:id="@+id/getChatroomsButton"
-				android:layout_width="wrap_content" android:layout_height="wrap_content"
-				android:text="Get Chatrooms" android:onClick="changeView"/>
-
-		</TableRow>
-	</TableLayout>
-
-	<ScrollView android:id="@+id/scrollView1"
-		android:layout_width="fill_parent" android:layout_height="match_parent"
-		android:layout_alignParentLeft="true" android:layout_below="@+id/tableLayout1">
-
-		<LinearLayout android:layout_width="match_parent"
-			android:layout_height="wrap_content" android:orientation="vertical">
-
-			<TextView android:id="@+id/outputText" android:layout_width="match_parent"
-				android:layout_height="match_parent" android:ems="10"
-				android:inputType="textMultiLine"
-				android:text="hier soll ganz viel text drin stehen können hier soll ganz viel text drin stehen können hier soll ganz viel text drin stehen können hier soll ganz viel text drin stehen können hier soll ganz viel text drin stehen können hier soll ganz viel text drin stehen können hier soll ganz viel text drin stehen können hier soll ganz viel text drin stehen können hier soll ganz viel text drin stehen können hier soll ganz viel text drin stehen können "
-				android:textSize="12sp" />
-		</LinearLayout>
-	</ScrollView>
+            <TextView
+                android:id="@+id/outputText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:inputType="textMultiLine"
+                android:text="hier soll ganz viel text drin stehen können hier soll ganz viel text drin stehen können hier soll ganz viel text drin stehen können hier soll ganz viel text drin stehen können hier soll ganz viel text drin stehen können hier soll ganz viel text drin stehen können hier soll ganz viel text drin stehen können hier soll ganz viel text drin stehen können hier soll ganz viel text drin stehen können hier soll ganz viel text drin stehen können "
+                android:textSize="12sp" />
+        </LinearLayout>
+    </ScrollView>
 
 </RelativeLayout>
