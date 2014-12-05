@@ -13,7 +13,7 @@ public class ActivityLobby extends Activity {
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
 	super.onCreate(savedInstanceState);
-	this.setContentView(R.layout.activity_lobby);
+	//this.setContentView(R.layout.activity_lobby);
 	this.stateManager = new ClientStateManager(this);
 	// this.stateManager.initState();
 	// this.stateManager.setState(this.stateManager.getLoggedIn());

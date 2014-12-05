@@ -942,13 +942,15 @@ public class ClientStateManager implements IReceiveStompMessages,
 	this.portEditText = (EditText) owner.findViewById(R.id.portEditText);
 	this.unameEditText = (EditText) owner.findViewById(R.id.unameText);
 	this.pwordEditText = (EditText) owner.findViewById(R.id.pwordText);
-	this.outputText = (TextView) owner.findViewById(R.id.outputText);
+	// this.outputText = (TextView) owner.findViewById(R.id.outputText);
 	this.connectToggleButton = (ToggleButton) owner.findViewById(R.id.connectToggleButton);
 	this.loginButton = (Button) owner.findViewById(R.id.loginButton);
 	this.logoutButton = (Button) owner.findViewById(R.id.logoutButton);
 	this.registerButton = (Button) owner.findViewById(R.id.registerButton);
-	this.getChattersButton = (Button) owner.findViewById(R.id.getChattersButton);
+	// this.getChattersButton = (Button)
+	// owner.findViewById(R.id.getChattersButton);
 	this.getChatroomsButton = (Button) owner.findViewById(R.id.getChatroomsButton);
+
 	this.loginButton.setOnClickListener(new OnClickListener() {
 	    @Override
 	    public void onClick(final View v) {
@@ -970,22 +972,24 @@ public class ClientStateManager implements IReceiveStompMessages,
 		ClientStateManager.this.currentState.onRegister();
 	    }
 	});
-	this.getChattersButton.setOnClickListener(new OnClickListener() {
-	    @Override
-	    public void onClick(final View v) {
-		Log.v("Message trace", "onGetChatters"); //$NON-NLS-1$ //$NON-NLS-2$
-		ClientStateManager.this.currentState.onGetChatters();
-	    }
-	});
 	/*
-	 * this.getChatroomsButton.setOnClickListener(new OnClickListener() {
+	 * this.getChattersButton.setOnClickListener(new OnClickListener() {
 	 * @Override
 	 * public void onClick(final View v) {
-	 * Log.v("Message trace", "onGetChatrooms"); //$NON-NLS-1$ //$NON-NLS-2$
-	 * ClientStateManager.this.currentState.onGetChatrooms();
+	 * Log.v("Message trace", "onGetChatters"); //$NON-NLS-1$ //$NON-NLS-2$
+	 * ClientStateManager.this.currentState.onGetChatters();
 	 * }
 	 * });
 	 */
+
+	this.getChatroomsButton.setOnClickListener(new OnClickListener() {
+	    @Override
+	    public void onClick(final View v) {
+		Log.v("Message trace", "onGetChatrooms"); //$NON-NLS-1$ //$NON-NLS-2$
+		ClientStateManager.this.currentState.onGetChatrooms();
+	    }
+	});
+
 	this.connectToggleButton.setOnClickListener(new OnClickListener() {
 	    @Override
 	    public void onClick(final View v) {

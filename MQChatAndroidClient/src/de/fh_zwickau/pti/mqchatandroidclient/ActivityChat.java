@@ -80,6 +80,7 @@ public class ActivityChat extends Activity {
 	this.stompAdapter.setMessageReceiver(this.stateManager);
 	this.stateManager.setMessageProducer(this.stompAdapter);
 	this.stateManager.initState();
+	this.stateManager.setState(this.stateManager.getLoggedIn());
 	if (savedInstanceState != null) {
 	    final ChatHistoryState hist = (ChatHistoryState) savedInstanceState.get(ActivityChat.HISTORY);
 	    this.stateManager.setHistoryState(hist);

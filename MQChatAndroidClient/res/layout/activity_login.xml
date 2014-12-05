@@ -13,9 +13,9 @@
         android:id="@+id/tableLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_centerInParent="false"
-        android:layout_centerVertical="false" >
+        android:layout_centerVertical="false"
+        android:layout_toLeftOf="@+id/button1" >
 
         <TableRow
             android:id="@+id/tableRow1"
@@ -25,42 +25,42 @@
 
             <EditText
                 android:id="@+id/urlEditText"
-                android:layout_width="140dp"
+                android:layout_width="135dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="141.32.24.102"
                 android:inputType="textUri"
                 android:maxLength="15"
+                android:minWidth="240dp"
                 android:textStyle="italic"
-                android:width="250dp" />
+                android:width="240dp" />
 
             <EditText
                 android:id="@+id/portEditText"
-                android:layout_width="80dp"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="61613"
                 android:inputType="number"
                 android:maxLength="5"
+                android:minWidth="60dp"
                 android:text="61613"
                 android:textStyle="italic"
-                android:width="70dp" />
+                android:width="60dp" />
 
             <EditText
                 android:id="@+id/unameText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
                 android:ems="10"
-                android:hint="Username"
                 android:text="@string/user"
                 android:width="150dp" />
 
             <EditText
                 android:id="@+id/pwordText"
-                android:layout_width="match_parent"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Password"
                 android:inputType="textPassword"
                 android:text="@string/pwd"
                 android:width="150dp" />
@@ -126,15 +126,6 @@
                 android:width="70dp" />
 
             <Button
-                android:id="@+id/getChattersButton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:minHeight="20dp"
-                android:text="Chatters"
-                android:textSize="12sp" />
-
-            <Button
                 android:id="@+id/getChatroomsButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -148,27 +139,49 @@
         </TableRow>
     </TableLayout>
 
-    <ScrollView
-        android:id="@+id/scrollView1"
-        android:layout_width="fill_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/tableLayout1" >
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/editText1"
+        android:layout_alignLeft="@+id/tableLayout1"
+        android:layout_below="@+id/tableLayout1"
+        android:layout_toLeftOf="@+id/button1"
+        android:hint="Hier stehen die Nachrichten" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:height="20dp"
+        android:minHeight="20dp"
+        android:text="Send"
+        android:textSize="12sp" />
 
-            <TextView
-                android:id="@+id/outputText"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:ems="10"
-                android:inputType="textMultiLine"
-                android:text="hier soll ganz viel text drin stehen können hier soll ganz viel text drin stehen können hier soll ganz viel text drin stehen können hier soll ganz viel text drin stehen können hier soll ganz viel text drin stehen können hier soll ganz viel text drin stehen können hier soll ganz viel text drin stehen können hier soll ganz viel text drin stehen können hier soll ganz viel text drin stehen können hier soll ganz viel text drin stehen können "
-                android:textSize="12sp" />
-        </LinearLayout>
-    </ScrollView>
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_alignTop="@+id/button1"
+        android:layout_toLeftOf="@+id/button1"
+        android:ems="10"
+        android:hint="Hier Text eingeben!" >
+
+        <requestFocus />
+    </EditText>
+
+    <ListView
+        android:id="@+id/listView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textView1"
+        android:layout_alignLeft="@+id/button1"
+        android:layout_alignRight="@+id/button1"
+        android:layout_alignTop="@+id/tableLayout1" >
+
+    </ListView>
 
 </RelativeLayout>
